@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.UserMapper">
+  <select id="getUserByUserNumAndUserPassword" resultType="User">
+    select *
+    from user
+    where user_num=#{userNum} AND user_password=#{userPassword}
+  </select>
+
+<insert id="insertUser"  parameterType="User">
+  insert into user (user_num, user_name, user_phone, user_classnum, user_class,user_password)
+   VALUES (#{userNum},#{userName},#{userPhone},#{userClassNum},#{userClass},#{userPassword})
+</insert>
+
+  <select id="listAllUser" resultType="User">
+    select * from user
+  </select>
+
+  <select id="getUserByClassNum" resultType="User">
+    select * from user
+    where user_classnum=#{userClassNum}
+  </select>
+
+</mapper>

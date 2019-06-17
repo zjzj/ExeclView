@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <form id="form"  name="form" method="post" enctype="multipart/form-data" >
+    名字：<input id="upName" name="upName">
+    学号：<input id="upNum" name="upNum">
+    课程：<input id="classNum" name="classNum">
+    班级：<input id="upClass" name="upClass">
+    电话：<input id="upPhone" name="upPhone">
+    时间：<input id="upTime" name="upTime">
+    <input type="button" id="sub" value="上传"  class="form-control btn-primary input-lg" style="width:100%;" >
+  </form>
+</head>
+<body>
+
+<script type="text/javascript" src="../assets/js/pagejs/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#sub").click(function (eventObject) {
+      var upName = $("#upName").val();
+      var upClass = $("#upClass").val();
+      var upNum = $("#upNum").val();
+      var classNum = $("#classNum").val();
+      var upPhone = $("#upPhone").val();
+      var upTime = $("#upTime").val();
+      var data = {
+        "rows":
+          [
+            {
+              "upName":upName,
+              "upNum":upNum,
+              "classNum":classNum,
+              "upClass":upClass,
+              "upPhone":upPhone,
+              "upTime":upTime
+            }
+          ],
+        "more":false
+      };
+
+      $.ajax({
+        url: "http://47.107.38.55:8435/addRecord",
+        type:'post',
+        data:{data:JSON.stringify(data)},
+        contentType: 'application/json; charset=UTF-8',
+        dataType: 'json',
+        success: function (data) {
+            alert(data.msg);
+        }
+      })
+    })
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+  <!-- 配置SpringMVC -->
+  <!-- 1.开启SpringMVC注解模式 -->
+  <mvc:annotation-driven />
+
+  <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+  <bean id="mappingJacksonHttpMessageConverter"
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    <property name="supportedMediaTypes">
+      <list>
+        <value>text/html;charset=UTF-8</value>
+      </list>
+    </property>
+  </bean>
+
+  <mvc:resources mapping="/resources/**" location="/assets" />
+  <mvc:default-servlet-handler />
+
+  <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/webapp/"/>
+    <property name="suffix" value=".html"/>
+  </bean>
+
+  <!-- 文件上传解析器 -->
+  <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="defaultEncoding" value="utf-8"/>
+    <!-- 1024 * 1024 * 1 = 1M -->
+    <property name="maxUploadSize" value="83886080"/>
+    <property name="maxInMemorySize" value="83886080"/>
+  </bean>
+
+  <context:component-scan base-package="controller"/>
+
+  <mvc:interceptors>
+    <!-- 多个拦截器，顺序执行 -->
+    <!-- 登录认证拦截器 -->
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <mvc:exclude-mapping path="/index.html"/>
+      <mvc:exclude-mapping path="/assets/**"/>
+      <mvc:exclude-mapping path="http://10.4.208.76:8888/ExeclView/login/admin"/>
+      <mvc:exclude-mapping path="/login/admin"/>
+      <mvc:exclude-mapping path="/user/login"/>
+      <mvc:exclude-mapping path="/view.html"/>
+      <mvc:exclude-mapping path="/WEB-INF/404.html"/>
+      <mvc:exclude-mapping path="/WEB-INF/500.html"/>
+
+      <bean class="interceptor.LoginInterceptor" />
+    </mvc:interceptor>
+
+  </mvc:interceptors>
+
+  <bean id="druid-stat-interceptor"
+        class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+  </bean>
+
+  <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+        scope="prototype">
+    <property name="patterns">
+      <list>
+        <value>dao.*</value>
+      </list>
+    </property>
+  </bean>
+
+  <!-- 创建基于类的代理 -->
+  <!--<aop:aspectj-autoproxy/>-->
+  <!--<aop:config proxy-target-class="true">-->
+    <!--<aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut" />-->
+  <!--</aop:config>-->
+
+</beans>

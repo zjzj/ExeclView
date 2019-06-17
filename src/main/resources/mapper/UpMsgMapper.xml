@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.UpMsgMapper">
+
+  <insert id="insertUpMsg" parameterType="UpMsg">
+    insert into upmsg (user_num, user_name,user_classnum) VALUES (#{userNum},#{userName},#{userClassNum})
+  </insert>
+
+  <select id="getUpMsgByUserNum" resultType="UpMsg">
+    select * from upmsg
+    where user_num = #{userNum}
+  </select>
+
+</mapper>

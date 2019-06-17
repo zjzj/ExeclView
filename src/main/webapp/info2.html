@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>作业管理系统</title>
+  <script src="assets/js/jquery-3.3.1.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <style>
+    #mainimg{
+      width: 85%;
+      height: 85%;
+    }
+    span{
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    h3 a{
+      padding-left: 19px;
+    }
+    span{
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    table, th, td { font-size: medium; }
+    table { margin-top: 10px; width: 100%; border: 2px solid #ddd; }
+    th { font-family: 等线,'Microsoft YaHei UI','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-align: center; }
+    td, th { border: 1px solid #ddd; padding: 5px; }
+    th span, td span { font-size: 14px; }
+    .normal { font-weight: normal; }
+    #fuzexinxi .form-control { padding-left: 1px; padding-right: 1px; text-align: center; }
+
+  </style>
+  <script src="assets/js/pagejs/info2.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 ">
+
+        <h1><span><img src="assets/images/lot.png" height="5%" width="5%"/></span>平时成绩管理系统</h1>
+      </div>
+    </div>
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li id="nav0" ><a href="first1.html">分数上传</a></li>
+        <li id="nav1" ><a href="info1.html">面对对象程序设计上传记录</a></li>
+        <li id="nav3" class="active"><a href="info2.html">1902上传记录</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h2 class=" panel-heading">修改记录</h2>
+  <table class="table table-bordered table-striped table-hover" id="emps_table">
+    <tbody>
+    <tr>
+      <th style="text-align: center">姓名</th>
+      <th style="text-align: center">学号</th>
+      <th style="width: 350px;text-align: center">课程编号</th>
+      <th style="width: 350px;text-align: center">上传时间</th>
+
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+
+</body>
+</html>

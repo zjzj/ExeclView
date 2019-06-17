@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ClassMsgMapper">
+  <insert id="insertClassMsg" parameterType="ClassMsg" >
+  insert into classmsg (class_num, class_name) values (#{classNum},#{classNum})
+  </insert>
+
+  <select id="listAllClassMsg" resultType="ClassMsg">
+    select * from classmsg
+  </select>
+</mapper>
