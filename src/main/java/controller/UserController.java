@@ -43,6 +43,13 @@ public class UserController {
   private final
   UpMsgService upMsgService;
 
+  /**
+   * 登录
+   * @param userNum userName
+   * @param userPassword userPassword
+   * @param session session
+   * @return 是否成功
+   */
   @PostMapping(value = "/login")
   public Result login(@Param("userNum") String userNum, @Param("userPassword") String userPassword, HttpSession session) {
     userService.getUserByUserNumAndUserPassword(userNum, userPassword, session);
@@ -53,6 +60,11 @@ public class UserController {
     }
   }
 
+  /**
+   * 登出
+   * @param session session
+   * @return 是否成功
+   */
   @GetMapping(value = "/logout")
   public Result logout(HttpSession session) {
     try {
@@ -63,6 +75,14 @@ public class UserController {
     }
   }
 
+  /**
+   * 上传文件以及将信息发送给区块链
+   * @param filename 文件名
+   * @param request request
+   * @param session session
+   * @return 是否成功
+   * @throws Exception 异常
+   */
   @PostMapping(value = "/upload")
   public Result upload1(@RequestParam(value = "files", required = false) MultipartFile filename,
                         HttpServletRequest request, HttpSession session) throws Exception {
@@ -84,7 +104,7 @@ public class UserController {
     File newFile = new File(parent + "/upload", num + ".xlsx");
     File saveFile = new File(parent + "/upload", time + num + ".xlsx");
     System.out.println(savedDir);
-    PostMethod postMethod = new PostMethod("http://10.2.132.171:8435/addRecord");
+    PostMethod postMethod = new PostMethod("http://10.4.208.76:8435/addRecord");
     postMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
     NameValuePair[] data = {
       new NameValuePair("upName", userName),

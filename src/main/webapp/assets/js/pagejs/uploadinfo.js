@@ -141,7 +141,7 @@ $(document).ready(function () {
         // }
         var data = {upName: upName,upClass: upClass,upNum: upNum,upPhone: upPhone}
         $.ajax({
-            url: "http://47.107.38.55:8081/ExeclView/file/upload",
+            url: "http://10.2.132.171:8081/ExeclView/file/upload",
             type: "POST",
             data: data,
             contentType: 'application/json; charset=UTF-8',

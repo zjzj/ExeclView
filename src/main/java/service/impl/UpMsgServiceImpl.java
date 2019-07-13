@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UpMsgService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -19,8 +20,9 @@ public class UpMsgServiceImpl implements UpMsgService {
   UpMsgMapper upMsgMapper;
 
   @Override
-  public void insertUpMsg(String userNum, String userName,Integer userClassNum) {
+  public void insertUpMsg(String userNum, String userName, Integer userClassNum, HttpSession session) {
     upMsgMapper.insertUpMsg(userNum, userName,userClassNum);
+
     
   }
 

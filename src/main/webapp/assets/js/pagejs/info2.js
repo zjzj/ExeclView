@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-      url:'http://10.2.132.171:8435/listRecords/101',
+      url:'http://10.4.208.76:8435/listRecords/101',
       type:'GET',
       datatype:'json',
       contentType: 'application/json; charset=UTF-8',

@@ -3,6 +3,7 @@ package service;
 import entity.UpMsg;
 import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public interface UpMsgService {
    * @param userNum 学号
    * @param userName 姓名
    */
-  void insertUpMsg(@Param("userNum") String userNum, @Param("userName") String userName,@Param("userClassNum") Integer userClassNum);
+  void insertUpMsg(@Param("userNum") String userNum, @Param("userName") String userName, @Param("userClassNum") Integer userClassNum, HttpSession session);
 
   List<UpMsg> getUpMsgByUserNum(@Param("userNum") String userNum);
 
