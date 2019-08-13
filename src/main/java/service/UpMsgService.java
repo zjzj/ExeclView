@@ -1,6 +1,7 @@
 package service;
 
 import entity.UpMsg;
+import entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import javax.servlet.http.HttpSession;
@@ -14,10 +15,8 @@ public interface UpMsgService {
 
   /**
    * 插入一条信息
-   * @param userNum 学号
-   * @param userName 姓名
    */
-  void insertUpMsg(@Param("userNum") String userNum, @Param("userName") String userName, @Param("userClassNum") Integer userClassNum, HttpSession session);
+  void insertUpMsg(User user);
 
   List<UpMsg> getUpMsgByUserNum(@Param("userNum") String userNum);
 

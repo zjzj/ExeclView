@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import service.UpMsgService;
 import service.UserService;
+import utils.HttpUtils;
 import utils.ResultUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +43,11 @@ public class UserController {
 
   private final
   UpMsgService upMsgService;
+
+  @Autowired
+  private HttpUtils utils;
+
+
 
   /**
    * 登录
@@ -89,37 +95,16 @@ public class UserController {
 
     User user = (User) session.getAttribute("user");
     Integer num = user.getUserClassNum();
-    String userNum = user.getUserNum();
-    String userName = user.getUserName();
-    Integer userClassNum = user.getUserClassNum();
-    Integer userClassNum2 = user.getUserClassNum();
-    String num2 = userClassNum2.toString();
-
-    Date date = new Date();
-    date.getTime();
-    String time = date.toString();
+    String time = new SimpleDateFormat("yyyy-MM--dd HH:mm:ss").format(new Date());
     File file = new File(request.getSession().getServletContext().getRealPath("/"));
     String parent = file.getParent();
-    String savedDir = request.getSession().getServletContext().getRealPath("/");
+    //向服务器存入两份文件，一份当作最新文件，一份当作历史文件
     File newFile = new File(parent + "/upload", num + ".xlsx");
     File saveFile = new File(parent + "/upload", time + num + ".xlsx");
-    System.out.println(savedDir);
-    PostMethod postMethod = new PostMethod("http://10.4.208.76:8435/addRecord");
-    postMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    NameValuePair[] data = {
-      new NameValuePair("upName", userName),
-      new NameValuePair("upNum", userNum),
-      new NameValuePair("classNum", num2),
-      new NameValuePair("upTime", time)
-    };
-    postMethod.setRequestBody(data);
-    String result = postMethod.getResponseBodyAsString();
-    org.apache.commons.httpclient.HttpClient httpClient = new org.apache.commons.httpclient.HttpClient();
     try {
-      httpClient.executeMethod(postMethod);
+      upMsgService.insertUpMsg(user);
       filename.transferTo(newFile);
       filename.transferTo(saveFile);
-      upMsgService.insertUpMsg(userNum, userName, userClassNum,session);
       return ResultUtil.success(ResultEnum.UPLOAD_SUCCESS);
     } catch (IOException e) {
       return ResultUtil.error(ResultEnum.UPLOAD_FALL);
