@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -106,7 +107,7 @@ public class UserController {
       filename.transferTo(newFile);
       filename.transferTo(saveFile);
       return ResultUtil.success(ResultEnum.UPLOAD_SUCCESS);
-    } catch (IOException e) {
+    } catch (IOException e){
       return ResultUtil.error(ResultEnum.UPLOAD_FALL);
     }
   }

@@ -39,5 +39,5 @@
     <!-- 给出需要扫描Dao接口包 -->
     <property name="basePackage" value="dao" />
   </bean>
-  <bean id="HttpUtil" class="utils.HttpUtils"></bean>
+  <bean id="httpUtil" class="utils.HttpUtils"/>
 </beans>

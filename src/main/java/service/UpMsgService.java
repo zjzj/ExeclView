@@ -16,7 +16,7 @@ public interface UpMsgService {
   /**
    * 插入一条信息
    */
-  void insertUpMsg(User user);
+  void insertUpMsg(User user) throws Exception;
 
   List<UpMsg> getUpMsgByUserNum(@Param("userNum") String userNum);
 
