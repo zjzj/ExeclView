@@ -41,7 +41,7 @@ public class UpMsgServiceImpl implements UpMsgService {
       Integer userClassNum = user.getUserClassNum();
       String num2 = userClassNum.toString();
       //存入区块链,因为防止区块链死掉信息没了，所以把信息也像数据库存一份
-      String url = "http://10.4.208.76:8435/addRecord";
+      String url = "http://47.107.38.55:8435/addRecord";
       if(utils.sendMsg(url,userName,userNum,num2)){
         //存入数据库
         upMsgMapper.insertUpMsg(userNum, userName,userClassNum);

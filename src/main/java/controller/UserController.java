@@ -96,12 +96,12 @@ public class UserController {
 
     User user = (User) session.getAttribute("user");
     Integer num = user.getUserClassNum();
-    String time = new SimpleDateFormat("yyyy-MM--dd HH:mm:ss").format(new Date());
+    String time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     File file = new File(request.getSession().getServletContext().getRealPath("/"));
     String parent = file.getParent();
     //向服务器存入两份文件，一份当作最新文件，一份当作历史文件
-    File newFile = new File(parent + "/upload", num + ".xlsx");
-    File saveFile = new File(parent + "/upload", time + num + ".xlsx");
+    File newFile = new File(parent + "/upload", num.toString() + ".xlsx");
+    File saveFile = new File(parent + "/upload", time + "-" +num.toString() + ".xlsx");
     try {
       upMsgService.insertUpMsg(user);
       filename.transferTo(newFile);
