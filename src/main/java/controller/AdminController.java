@@ -34,9 +34,9 @@ public class AdminController {
     Integer adminId = adminService.getAdminByAdminAndAdminPassword(adminName,adminPassword,session);
    if(adminId != null){
      session.setAttribute("adminId",adminId);
-     return ResultUtil.success(ResultEnum.LOGIN_SUCCESS);
+     return ResultUtil.success(ResultEnum.USER_LOGIN_SUCCESS_1);
    }else{
-     return ResultUtil.error(ResultEnum.LOGIN_FAIL);
+     return ResultUtil.error(ResultEnum.USER_LOGIN_SUCCESS_2);
    }
   }
 

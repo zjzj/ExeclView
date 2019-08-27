@@ -63,7 +63,7 @@ public class UserController {
     if (userService.getUserByUserNumAndUserPassword(userNum, userPassword, session) != null) {
       return ResultUtil.success(ResultEnum.USER_LOGIN_SUCCESS_1);
     } else {
-      return ResultUtil.error(ResultEnum.USER_LOGIN_SUCCESS_3);
+      return ResultUtil.error(ResultEnum.USER_LOGIN_SUCCESS_2);
     }
   }
 

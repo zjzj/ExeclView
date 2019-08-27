@@ -50,9 +50,9 @@
       <mvc:mapping path="/**" />
       <mvc:exclude-mapping path="/index.html"/>
       <mvc:exclude-mapping path="/assets/**"/>
-      <mvc:exclude-mapping path="http://10.4.208.76:8888/ExeclView/login/admin"/>
       <mvc:exclude-mapping path="/login/admin"/>
       <mvc:exclude-mapping path="/user/login"/>
+      <mvc:exclude-mapping path="/ExeclView/user/login"/>
       <mvc:exclude-mapping path="/view.html"/>
       <mvc:exclude-mapping path="/WEB-INF/404.html"/>
       <mvc:exclude-mapping path="/WEB-INF/500.html"/>

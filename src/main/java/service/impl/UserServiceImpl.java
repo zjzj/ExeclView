@@ -19,6 +19,13 @@ public class UserServiceImpl implements UserService {
   UserMapper userMapper;
 
 
+  /**
+   * 登录
+   * @param userNum 学号
+   * @param userPassword 密码
+   * @param session  session
+   * @return userNum
+   */
   @Override
   public String getUserByUserNumAndUserPassword(String userNum, String userPassword, HttpSession session) {
     User user = userMapper.getUserByUserNumAndUserPassword(userNum, userPassword);

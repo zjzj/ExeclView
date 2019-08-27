@@ -48,7 +48,7 @@ public class MapperTest {
 
     String postURL;
     PostMethod postMethod = null;
-    postMethod = new PostMethod("http://47.107.38.55:8435/addRecord");
+    postMethod = new PostMethod("http://10.2.132.171:8435/addRecord");
     postMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 //参数设置，需要注意的就是里边不能传NULL，要传空字符串
     NameValuePair[] data = {

@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#kc").click(function (eventObject) {
     var kcm = $("#kzm").val();
-    var url = "http://10.4.208.76:8435/listRecords/"+kcm
+    var url = "http://10.2.132.171:8435/listRecords/"+kcm
     $.ajax({
       url: url,
       type: 'GET',
