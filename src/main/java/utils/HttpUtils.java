@@ -14,8 +14,7 @@ import java.util.Date;
  */
 
 public class HttpUtils {
-   public boolean sendMsg(String url,String userName,String userNum,String classNum){
-     String time = new SimpleDateFormat("yyyy-MM--dd HH:mm:ss").format(new Date());
+   public boolean sendMsg(String url,String userName,String userNum,String classNum,String time){
      PostMethod postMethod = new PostMethod(url);
      postMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
      NameValuePair[] data = {
